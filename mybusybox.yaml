@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: my-busybox
-  name: my-busybox
+    app: mybusybox
+  name: mybusybox
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: my-busybox
+      app: mybusybox
   template:
     metadata:
       labels:
-        app: my-busybox
+        app: mybusybox
     spec:
       containers:
       - command:
         - /bin/sh
         - -c
-        - mkdir /vol;  echo 'hello world' > /vol/hello.txt ; cat /vol/hello.txt; sleep 10;
+        - mkdir /vol; date >> /vol/date.log ; cat /vol/date.log; sleep 3600;
         image: busybox
         name: busybox
